@@ -10,7 +10,6 @@ export default class Movies {
         const endpoint = `${this.baseUrl + this.type}/${this.apiKey}`;
         await fetch(endpoint)
             .then((response) => response.json())
-            .then((data) => { this.data = data.items;
-            console.log(this.data) });
+            .then((data) => { this.data = data.items;});
     }
 }
