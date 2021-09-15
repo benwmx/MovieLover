@@ -16,7 +16,3 @@ popular.getData().then(() => {
 top_rated.getData().then(() => {
     displayMovies(top_rated.data, 'top_rated');
 });
-
-
-// 
-
