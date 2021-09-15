@@ -11,7 +11,7 @@ export default class Movies {
         await fetch(endpoint)
             .then((response) => response.json())
             .then((data) => { 
-                console.log(data.results);
+                // console.log(data.results);
                 this.filterData(data.results)});
     }
 
