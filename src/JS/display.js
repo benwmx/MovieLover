@@ -20,8 +20,8 @@ const displayMovies = (data, elementId) => {
     </div>
     </div>`;
       list.insertAdjacentHTML('beforeend', card);
-  });
-    }
+    });
+  }
   section.innerHTML = '';
   section.appendChild(list);
 };

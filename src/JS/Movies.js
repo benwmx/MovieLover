@@ -12,7 +12,7 @@ export default class Movies {
       .then((response) => response.json())
       .then((data) => {
         this.filterData(data.results);
-    });
+      });
   }
 
   filterData = (data) => {
