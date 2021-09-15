@@ -7,7 +7,7 @@ const displayList = (data, elementId) => {
     list.classList.add('list');
     if (data !== []) {
         data.forEach((row) => {
-            const { id, image, title } = row;
+            const { image, id, title } = row;
             const card = `<div id="${id}" class="card m-2 bg-dark text-light" style="width: 12rem;">
         <img src="${image}" class="card-img-top" alt="${title}">
         <div class="card-body">
@@ -25,22 +25,8 @@ const displayList = (data, elementId) => {
     section.innerHTML = '';
     section.appendChild(list);
 };
-// const comingSoon = new Movies('ComingSoon');
-// comingSoon.getData().then(() => {
-//     console.log('recived');
-//     displayList(comingSoon.data, 'comingSoon');
-// });
-const tempData = [{id:'abc', image:'https://i.pinimg.com/originals/bc/d5/c9/bcd5c9519581acc60bd60a429ab0c88f.jpg', title:'Test Movie'},
-{id:'abc', image:'https://i.pinimg.com/originals/bc/d5/c9/bcd5c9519581acc60bd60a429ab0c88f.jpg', title:'Test Movie'},
-{id:'abc', image:'https://i.pinimg.com/originals/bc/d5/c9/bcd5c9519581acc60bd60a429ab0c88f.jpg', title:'Test Movie'},
-{id:'abc', image:'https://i.pinimg.com/originals/bc/d5/c9/bcd5c9519581acc60bd60a429ab0c88f.jpg', title:'Test Movie'},
-{id:'abc', image:'https://i.pinimg.com/originals/bc/d5/c9/bcd5c9519581acc60bd60a429ab0c88f.jpg', title:'Test Movie'},
-{id:'abc', image:'https://i.pinimg.com/originals/bc/d5/c9/bcd5c9519581acc60bd60a429ab0c88f.jpg', title:'Test Movie'},
-{id:'abc', image:'https://i.pinimg.com/originals/bc/d5/c9/bcd5c9519581acc60bd60a429ab0c88f.jpg', title:'Test Movie'},
-{id:'abc', image:'https://i.pinimg.com/originals/bc/d5/c9/bcd5c9519581acc60bd60a429ab0c88f.jpg', title:'Test Movie'},
-{id:'abc', image:'https://i.pinimg.com/originals/bc/d5/c9/bcd5c9519581acc60bd60a429ab0c88f.jpg', title:'Test Movie'},
-{id:'abc', image:'https://i.pinimg.com/originals/bc/d5/c9/bcd5c9519581acc60bd60a429ab0c88f.jpg', title:'Test Movie'},
-{id:'abc', image:'https://i.pinimg.com/originals/bc/d5/c9/bcd5c9519581acc60bd60a429ab0c88f.jpg', title:'Test Movie'},
-{id:'abc', image:'https://i.pinimg.com/originals/bc/d5/c9/bcd5c9519581acc60bd60a429ab0c88f.jpg', title:'Test Movie'},
-];
-displayList(tempData, 'comingSoon');
+const upcoming = new Movies('upcoming');
+upcoming.getData().then(() => {
+    console.log('recived');
+    displayList(upcoming.data, 'upcoming');
+});
