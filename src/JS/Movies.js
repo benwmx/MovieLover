@@ -11,18 +11,19 @@ export default class Movies {
     await fetch(endpoint)
       .then((response) => response.json())
       .then((data) => {
-        this.filterData(data.results)});
+        this.filterData(data.results);
+    });
   }
 
   filterData = (data) => {
     data.forEach((movie) => {
       this.data.push({
-        title:movie.title,
-        image:'https://image.tmdb.org/t/p/w500'+movie.poster_path,
-        id:movie.id,
-        overview:movie.overview,
-        release_date:movie.release_date,
-        vote_average:movie.vote_average,
+        title: movie.title,
+        image: `https://image.tmdb.org/t/p/w500'${movie.poster_path}`,
+        id: movie.id,
+        overview: movie.overview,
+        release_date: movie.release_date,
+        vote_average: movie.vote_average,
       });
     });
   }

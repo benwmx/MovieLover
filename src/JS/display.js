@@ -1,6 +1,5 @@
 const displayMovies = (data, elementId) => {
   const section = document.getElementById(elementId);
-  console.log(section);
   const list = document.createElement('div');
   list.id = 'list';
   list.classList.add('list');
@@ -22,9 +21,9 @@ const displayMovies = (data, elementId) => {
     </div>`;
       list.insertAdjacentHTML('beforeend', card);
   });
-  }
+    }
   section.innerHTML = '';
   section.appendChild(list);
 };
 
-export { displayMovies }
+export default displayMovies;
