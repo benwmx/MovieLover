@@ -1,4 +1,4 @@
-export default class Comment {
+export default class InvolvementAPI {
   constructor() {
     this.url = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/06lGJozlqpSMU5gXuf4o/comments';
   }

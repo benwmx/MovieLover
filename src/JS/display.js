@@ -66,6 +66,10 @@ const displayMovies = (data, sectionId) => {
 };
 
 const displayMovieDetails = (movie) => {
+  const overlay = document.querySelector('.popOverlay');
+  const popup = document.querySelector('.popContainer');
+  overlay.classList.remove('d-none');
+  popup.classList.remove('d-none');
   const title = document.querySelector('.title');
   const poster = document.querySelector('#poster');
   const releaseDate = document.querySelector('#date');

@@ -29,11 +29,18 @@ export default class Movies {
   }
 
   movieInfo = (id) => {
+    let clickedMovie = [];
     this.data.forEach((movie) => {
-      if (movie.id === id) {
-        return movie;
+      if (movie.id == id) {
+        console.log("done");
+        clickedMovie = movie;
       }
-      return new Error('not Found!!');
     });
+    if(clickedMovie === []){
+      return new Error('not Found!!');
+    }
+    else{
+      return clickedMovie;
+    }
   }
 }

@@ -1,31 +1,32 @@
 import './CSS/style.css';
 import './CSS/popup.css';
-import { displayMovies, displayComments, addPopupToDom } from './JS/display.js';
+import { displayMovies, displayMovieDetails, displayComments, addPopupToDom } from './JS/display.js';
 import Movies from './JS/Movies.js';
-import Comment from './JS/Comment.js';
+import InvolvementAPI from './JS/involvementAPI.js';
 
 const upcoming = new Movies('upcoming');
 const popular = new Movies('popular');
 const topRated = new Movies('top_rated');
-const comment = new Comment();
+const involvement = new InvolvementAPI();
 
 // this id is a mock-up for the clicked movie.
 const id = '101test';
 
 document.addEventListener('DOMContentLoaded', () => {
   addPopupToDom();
-  const overlay = document.querySelector('.popOverlay');
-  const popup = document.querySelector('.popContainer');
   upcoming.getData().then(() => {
     displayMovies(upcoming.data, 'upcoming');
-    const list = document.getElementById('list-upcoming');
-    list.addEventListener('click', (event) => {
-      if (event.target.classList.contain('card-img-top')) {
-        overlay.classList.remove('d-none');
-        popup.classList.remove('d-none');
-        upcoming.movieInfo();
+    const movieContainer = document.getElementById('list-upcoming');
+    movieContainer.addEventListener('click', (event) => {
+      if (event.target.classList.contains('card-img-top')) {
+        console.log(event.target.id);
+        const id = event.target.id.replace('img','');
+        console.log(id);
+        const movie = upcoming.movieInfo(id);
+        console.log(movie);
+        displayMovieDetails(movie);
       }
-      if (event.target.classList.contain('card-title')) {
+      if (event.target.classList.contains('card-title')) {
         overlay.classList.remove('d-none');
         popup.classList.remove('d-none');
       }
@@ -47,8 +48,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   submitComment.addEventListener('click', (event) => {
     event.preventDefault();
-    comment.add(id, name.value, commentDescription.value).then(() => {
-      comment.getList(id).then((data) => {
+    involvementAPI.addComment(id, name.value, commentDescription.value).then(() => {
+      involvementAPI.getComments(id).then((data) => {
         displayComments(data);
       });
     });
