@@ -1,6 +1,6 @@
 export default class InvolvementAPI {
   constructor() {
-    this.url = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/06lGJozlqpSMU5gXuf4o/comments';
+    this.url = 'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/hFueqaHxN0XgzwPkj13F/comments';
   }
 
   async addComment(id, name, comment) {
@@ -17,9 +17,6 @@ export default class InvolvementAPI {
 
   async getComments(id) {
     const endPoint = `${this.url}?item_id=${id}`;
-    const response = await fetch(endPoint);
-    response.then((res) => {
-      res.json();
-    });
+    await fetch(endPoint).then((response) => response.json());
   }
 }

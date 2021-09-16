@@ -39,7 +39,7 @@
   left: 0;
   bottom: 0;
   z-index: 2;
-  background-image: linear-gradient(to bottom right, gold, white);
+  background-image: linear-gradient(to bottom right, #212529, #447a8f);
   box-shadow: 4px 4px 20px rgb(207, 199, 199);
   border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -103,10 +103,16 @@ img#poster {
   margin: 10px 0 5px 0;
 }
 
+.add-comment form input,
+.add-comment form textarea {
+  width: 70%;
+}
+
 .add-comment form #submit {
   width: 40%;
   border: none;
   padding: 5px;
+  margin: 10px 0 5px 0;
   box-shadow: 2px 2px 5px rgb(63, 59, 59);
   border-radius: 2px;
   background-color: #5abded;
@@ -114,6 +120,18 @@ img#poster {
   -moz-border-radius: 2px;
   -ms-border-radius: 2px;
   -o-border-radius: 2px;
+}
+
+.add-comment form #submit:active {
+  background-color: #ffd809;
+}
+
+.add-comment form #submit:hover {
+  transform: translateY(1px);
+  -webkit-transform: translateY(1px);
+  -moz-transform: translateY(1px);
+  -ms-transform: translateY(1px);
+  -o-transform: translateY(1px);
 }
 
 @media only screen and (max-width: 1000px) {
@@ -142,5 +160,17 @@ img#poster {
   .add-comment form {
     margin-bottom: 10px;
     padding: 10px;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .info {
+    display: flex;
+    flex-flow: column;
+  }
+
+  img#poster,
+  .details {
+    width: 90%;
   }
 }
