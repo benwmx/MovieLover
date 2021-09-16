@@ -2,17 +2,18 @@ const addPopupToDom = () => {
   const popup = `<div class="popOverlay d-none"></div>
     <div class="popContainer d-none">
         <i class="fas fa-times close-pop"></i>
-        <img id='poster' src="#" alt="poster">
-        <h2 class="title"></h2>
-        <a href="#" class="btn btn-primary">Add to Watch list</a>
-        <div class="date-vote">
+        
+        <div class='info'>
+          <img id='poster' src="#" alt="poster">
+          <div class="details">
+            <h2 class="title"></h2>
             <p class="release_date">Release Date : <span id="date"></span> </p>
             <p class="vote_average">Voting Average : <span id="vote"></span></p>
-        </div>
-        <div class="overview">
-            <h4>Overview : </h4>
-            <p id="overview-txt">
-            </p>
+            <div class="overview">
+              <h4>Overview : </h4>
+              <p id="overview-txt"></p>
+            </div>
+          </div>  
         </div>
         <div class="comments">
             <h2 class="comments-title title">Comments (<span class="comments-counter"></span>)</h2>
@@ -27,10 +28,9 @@ const addPopupToDom = () => {
             <h2 class="add-comment title">Add a Comment</h2>
             <form action="#">
                 <label for="name">Name:</label>
-                <input id="name" type="text" placeholder="Your Name">
+                <input id="name" type="text" placeholder="Your Name" required>
                 <label for="comment-description">Comment:</label>
-                <textarea name="comment" id="comment-description" cols="30" rows="6" placeholder="Comment">
-                </textarea>
+                <textarea name="comment" id="comment-description" cols="30" rows="6" placeholder="Comment" required></textarea>
                 <button id="submit" type="submit">Comment</button>
             </form>
         </div>
@@ -74,10 +74,12 @@ const displayMovieDetails = (movie) => {
   const poster = document.querySelector('#poster');
   const releaseDate = document.querySelector('#date');
   const votingAverage = document.querySelector('#vote');
-  title.value = movie.title;
+  const overview = document.querySelector('#overview-txt');
+  title.innerText = movie.title;
   poster.src = movie.image;
-  releaseDate.value = movie.release_date;
-  votingAverage.value = movie.vote_average;
+  releaseDate.innerText = movie.release_date;
+  votingAverage.innerText = movie.vote_average;
+  overview.innerText = movie.overview;
 };
 
 const displayComments = (comments) => {

@@ -10,6 +10,7 @@ body {
 }
 
 .card-img-top,
-.card-title {
+.card-title,
+.fa-comment-dots {
   cursor: pointer;
 }

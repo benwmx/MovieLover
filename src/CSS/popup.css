@@ -32,14 +32,14 @@
   display: flex;
   flex-flow: column;
   height: 90%;
-  width: 60%;
-  margin: 20px 20%;
-  padding: 40px 80px;
+  width: 50%;
+  margin: 20px 25%;
+  padding: 40px 40px;
   top: 0;
   left: 0;
   bottom: 0;
   z-index: 2;
-  background-color: rgb(255, 255, 255);
+  background-image: linear-gradient(to bottom right, gold, white);
   box-shadow: 4px 4px 20px rgb(207, 199, 199);
   border-radius: 5px;
   -webkit-border-radius: 5px;
@@ -58,15 +58,18 @@
 }
 
 img#poster {
-  width: 40%;
-  align-self: center;
-  margin: 50px 0;
+  width: 50%;
+  align-self: flex-start;
   border: 3px solid #5abded;
 }
 
-.date-vote {
+.info {
   display: flex;
-  justify-content: space-between;
+}
+
+.details {
+  width: 50%;
+  margin: 0 0 0 20px;
 }
 
 .comments-list {
@@ -111,4 +114,33 @@ img#poster {
   -moz-border-radius: 2px;
   -ms-border-radius: 2px;
   -o-border-radius: 2px;
+}
+
+@media only screen and (max-width: 1000px) {
+  .popContainer {
+    width: 80%;
+    margin: 20px 10%;
+    padding: 40px 40px;
+  }
+}
+
+@media only screen and (max-width: 1500px) {
+  .popContainer {
+    width: 60%;
+    margin: 20px 20%;
+    padding: 40px 40px;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .popContainer {
+    width: 90%;
+    margin: 20px 5%;
+    padding: 40px 10px;
+  }
+
+  .add-comment form {
+    margin-bottom: 10px;
+    padding: 10px;
+  }
 }
