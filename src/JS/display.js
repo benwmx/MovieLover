@@ -37,7 +37,6 @@ const addPopupToDom = () => {
         </div>
     </div>`;
   document.body.innerHTML += popup;
-  console.log(document.body.innerHTML);
 };
 
 const displayMovies = (data, sectionId) => {
@@ -87,7 +86,7 @@ const displayMovieDetails = (movie) => {
 const displayComments = (comments) => {
   const list = document.querySelector('.comments-list');
   const noCommentMessage = document.getElementById('noCommentMessage');
-  if(comments.length===0){
+  if (comments.length === 0) {
     list.innerHTML = '';
     noCommentMessage.classList.remove('d-none');
   } else {

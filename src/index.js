@@ -19,14 +19,23 @@ document.addEventListener('DOMContentLoaded', () => {
   const closeBtn = document.querySelector('.close-pop');
   const overlay = document.querySelector('.popOverlay');
   const popup = document.querySelector('.popContainer');
-  const getAndDisplayMovieDetails = (id) => {
-    const movie = upcoming.movieInfo(id);
-        displayMovieDetails(movie);
-        involvement.getComments(id).then(() => {
-          displayComments(involvement.popupComments);
-        });
-      document.getElementById('idHiddenInput').value = id;
-  }
+  const getAndDisplayMovieDetails = (id, elementId) => {
+    let movie = null;
+    switch (elementId) {
+      case 'upcoming': movie = upcoming.movieInfo(id);
+        break;
+      case 'popular': movie = popular.movieInfo(id);
+        break;
+      case 'top_rated': movie = topRated.movieInfo(id);
+        break;
+      default: movie = null;
+    }
+    displayMovieDetails(movie);
+    involvement.getComments(id).then(() => {
+      displayComments(involvement.popupComments);
+    });
+    document.getElementById('idHiddenInput').value = id;
+  };
 
   const addEventListenerToMovies = (elementId) => {
     const movieContainer = document.getElementById(`list-${elementId}`);
@@ -40,10 +49,10 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       if (event.target.classList.contains('fa-comment-dots')) {
         id = event.target.id.replace('comment', '');
-    }
-    getAndDisplayMovieDetails(id);
-  });
-  }
+      }
+      getAndDisplayMovieDetails(id, elementId);
+    });
+  };
 
   upcoming.getData().then(() => {
     displayMovies(upcoming.data, 'upcoming');
@@ -62,8 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   submitComment.addEventListener('click', (event) => {
     event.preventDefault();
-    const id =document.getElementById('idHiddenInput').value;
-    console.log(id);
+    const id = document.getElementById('idHiddenInput').value;
     involvement.addComment(id, name.value, commentDescription.value).then(() => {
       involvement.getComments(id).then(() => {
         displayComments(involvement.popupComments);
