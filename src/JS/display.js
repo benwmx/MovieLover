@@ -1,34 +1,3 @@
-/* eslint-disable no-unused-vars */
-const displayComments = (comments) => {
-  const list = document.querySelector('.comments-list');
-  list.innerHTML = '';
-  comments.forEach((comment) => {
-    const container = document.createElement('li');
-    container.className = 'comment-container';
-    const time = document.createElement('p');
-    time.className = 'comment-time';
-    const name = document.createElement('p');
-    name.className = 'comment-name';
-    const description = document.createElement('p');
-    description.className = 'comment-description';
-    time.value = comment.creation_date;
-    name.value = comment.username;
-    description.value = comment.comment;
-    list.appendChild(container);
-  });
-};
-
-const displayMovieDetails = (movie) => {
-  const title = document.querySelector('.title');
-  const poster = document.querySelector('#poster');
-  const releaseDate = document.querySelector('#date');
-  const votingAverage = document.querySelector('#vote');
-  title.value = movie.title;
-  poster.src = movie.image;
-  releaseDate.value = movie.release_date;
-  votingAverage.value = movie.vote_average;
-};
-
 const addPopupToDom = () => {
   const popup = `<div class="popOverlay d-none"></div>
     <div class="popContainer d-none">
@@ -65,6 +34,65 @@ const addPopupToDom = () => {
             </form>
         </div>
     </div>`;
+ document.body.append(popup);
 };
 
-export { displayComments, displayMovieDetails, addPopupToDom };
+const displayMovies = (data, sectionId) => {
+  const section = document.getElementById(sectionId);
+  const list = document.createElement('div');
+  list.id = 'list';
+  list.classList.add('list');
+  if (data !== []) {
+    data.forEach((row) => {
+      const { image, id, title } = row;
+      const card = `<div id="${id}" class="card m-2 bg-dark text-light" style="width: 12rem;">
+    <img src="${image}" class="card-img-top" alt="${title}">
+    <div class="card-body d-flex flex-column justify-content-between align-items-start">
+      <h5 class="card-title">${title}</h5>
+      <div>
+      <div class='my-2'>
+      <i class="far fa-heart text-danger my-3"></i> 100
+      <i class="fas fa-comment-dots mx-2"></i> 10
+      </div>
+      <a href="#" class="btn btn-primary">Add to Watch list</a>
+      </div>
+    </div>
+    </div>`;
+      list.insertAdjacentHTML('beforeend', card);
+    });
+  }
+  section.innerHTML = '';
+  section.appendChild(list);
+};
+
+const displayMovieDetails = (movie) => {
+  const title = document.querySelector('.title');
+  const poster = document.querySelector('#poster');
+  const releaseDate = document.querySelector('#date');
+  const votingAverage = document.querySelector('#vote');
+  title.value = movie.title;
+  poster.src = movie.image;
+  releaseDate.value = movie.release_date;
+  votingAverage.value = movie.vote_average;
+};
+
+const displayComments = (comments) => {
+  const list = document.querySelector('.comments-list');
+  list.innerHTML = '';
+  comments.forEach((comment) => {
+    const container = document.createElement('li');
+    container.className = 'comment-container';
+    const time = document.createElement('p');
+    time.className = 'comment-time';
+    const name = document.createElement('p');
+    name.className = 'comment-name';
+    const description = document.createElement('p');
+    description.className = 'comment-description';
+    time.value = comment.creation_date;
+    name.value = comment.username;
+    description.value = comment.comment;
+    list.appendChild(container);
+  });
+};
+
+export { addPopupToDom, displayMovies, displayMovieDetails, displayComments };

@@ -1,8 +1,12 @@
 import './CSS/style.css';
 import './CSS/popup.css';
+import { displayMovies, displayComments } from './JS/display.js';
+import Movies from './js/Movies.js';
 import Comment from './JS/Comment.js';
-import { displayComments } from './JS/display.js';
 
+const upcoming = new Movies('upcoming');
+const popular = new Movies('popular');
+const topRated = new Movies('top_rated');
 const comment = new Comment();
 const submiComment = document.getElementById('submit');
 const name = document.getElementById('name');
@@ -12,6 +16,18 @@ const overlay = document.querySelector('.popOverlay');
 const popup = document.querySelector('.popContainer');
 // this id is a mock-up for the clicked movie.
 const id = '101test';
+
+upcoming.getData().then(() => {
+  displayMovies(upcoming.data, 'upcoming');
+});
+
+popular.getData().then(() => {
+  displayMovies(popular.data, 'popular');
+});
+
+topRated.getData().then(() => {
+  displayMovies(topRated.data, 'top_rated');
+});
 
 submiComment.addEventListener('click', (event) => {
   event.preventDefault();
