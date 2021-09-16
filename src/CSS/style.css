@@ -1,3 +1,10 @@
 body {
-  background-color: antiquewhite;
+  background-color: black;
+}
+
+.list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 20px;
 }
