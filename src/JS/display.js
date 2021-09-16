@@ -3,7 +3,8 @@ const addPopupToDom = () => {
     <div class="popContainer d-none">
         <i class="fas fa-times close-pop"></i>
         <img id='poster' src="#" alt="poster">
-        <h2 class="title">Title</h2>
+        <h2 class="title"></h2>
+        <a href="#" class="btn btn-primary">Add to Watch list</a>
         <div class="date-vote">
             <p class="release_date">Release Date : <span id="date"></span> </p>
             <p class="vote_average">Voting Average : <span id="vote"></span></p>
@@ -34,27 +35,26 @@ const addPopupToDom = () => {
             </form>
         </div>
     </div>`;
- document.body.append(popup);
+  document.body.innerHTML += popup;
 };
 
 const displayMovies = (data, sectionId) => {
   const section = document.getElementById(sectionId);
   const list = document.createElement('div');
-  list.id = 'list';
+  list.id = `list-${sectionId}`;
   list.classList.add('list');
   if (data !== []) {
     data.forEach((row) => {
       const { image, id, title } = row;
       const card = `<div id="${id}" class="card m-2 bg-dark text-light" style="width: 12rem;">
-    <img src="${image}" class="card-img-top" alt="${title}">
+    <img id ="img${id}" src="${image}" class="card-img-top" alt="${title}">
     <div class="card-body d-flex flex-column justify-content-between align-items-start">
-      <h5 class="card-title">${title}</h5>
+      <h5 id ="title${id}" class="card-title">${title}</h5>
       <div>
       <div class='my-2'>
-      <i class="far fa-heart text-danger my-3"></i> 100
-      <i class="fas fa-comment-dots mx-2"></i> 10
+      <i id ="likes${id}" class="far fa-heart text-danger my-3"></i> <span class="likes"></span>
+      <i id ="comment${id}" class="fas fa-comment-dots mx-2"></i> <span class="comments-counter"></span>
       </div>
-      <a href="#" class="btn btn-primary">Add to Watch list</a>
       </div>
     </div>
     </div>`;
@@ -95,4 +95,6 @@ const displayComments = (comments) => {
   });
 };
 
-export { addPopupToDom, displayMovies, displayMovieDetails, displayComments };
+export {
+  addPopupToDom, displayMovies, displayMovieDetails, displayComments,
+};

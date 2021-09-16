@@ -8,3 +8,8 @@ body {
   flex-wrap: wrap;
   margin: 20px;
 }
+
+.card-img-top,
+.card-title {
+  cursor: pointer;
+}
