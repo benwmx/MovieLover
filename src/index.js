@@ -19,97 +19,46 @@ document.addEventListener('DOMContentLoaded', () => {
   const closeBtn = document.querySelector('.close-pop');
   const overlay = document.querySelector('.popOverlay');
   const popup = document.querySelector('.popContainer');
-  upcoming.getData().then(() => {
-    displayMovies(upcoming.data, 'upcoming');
-    const movieContainer = document.getElementById('list-upcoming');
-    movieContainer.addEventListener('click', (event) => {
-      if (event.target.classList.contains('card-img-top')) {
-        const id = event.target.id.replace('img', '');
-        const movie = upcoming.movieInfo(id);
+  
+  const getAndDisplayMovieDetails = (id) => {
+    const movie = upcoming.movieInfo(id);
         displayMovieDetails(movie);
-        involvement.getComments(id).then((comments) => {
-          displayComments(comments);
+        involvement.getComments(id).then(() => {
+          displayComments(involvement.popupComments);
         });
+      document.getElementById('idHiddenInput').value = id;
+  }
+
+  const addEventListenerToMovies = (elementId) => {
+    const movieContainer = document.getElementById(`list-${elementId}`);
+    movieContainer.addEventListener('click', (event) => {
+      let id = null;
+      if (event.target.classList.contains('card-img-top')) {
+        id = event.target.id.replace('img', '');
       }
       if (event.target.classList.contains('card-title')) {
-        const id = event.target.id.replace('title', '');
-        const movie = upcoming.movieInfo(id);
-        displayMovieDetails(movie);
-        involvement.getComments(id).then((comments) => {
-          displayComments(comments);
-        });
+        id = event.target.id.replace('title', '');
       }
       if (event.target.classList.contains('fa-comment-dots')) {
-        const id = event.target.id.replace('comment', '');
-        const movie = upcoming.movieInfo(id);
-        displayMovieDetails(movie);
-        involvement.getComments(id).then((comments) => {
-          displayComments(comments);
-        });
-      }
-    });
+        id = event.target.id.replace('comment', '');
+    }
+    getAndDisplayMovieDetails(id);
+  });
+  }
+
+  upcoming.getData().then(() => {
+    displayMovies(upcoming.data, 'upcoming');
+    addEventListenerToMovies('upcoming');
   });
 
   popular.getData().then(() => {
     displayMovies(popular.data, 'popular');
-    const movieContainer = document.getElementById('list-popular');
-    movieContainer.addEventListener('click', (event) => {
-      if (event.target.classList.contains('card-img-top')) {
-        const id = event.target.id.replace('img', '');
-        const movie = popular.movieInfo(id);
-        displayMovieDetails(movie);
-        involvement.getComments(id).then((comments) => {
-          displayComments(comments);
-        });
-      }
-      if (event.target.classList.contains('card-title')) {
-        const id = event.target.id.replace('title', '');
-        const movie = popular.movieInfo(id);
-        displayMovieDetails(movie);
-        involvement.getComments(id).then((comments) => {
-          displayComments(comments);
-        });
-      }
-      if (event.target.classList.contains('fa-comment-dots')) {
-        const id = event.target.id.replace('comment', '');
-        const movie = popular.movieInfo(id);
-        displayMovieDetails(movie);
-        involvement.getComments(id).then((comments) => {
-          displayComments(comments);
-        });
-      }
-    });
+    addEventListenerToMovies('popular');
   });
 
   topRated.getData().then(() => {
     displayMovies(topRated.data, 'top_rated');
-    const movieContainer = document.getElementById('list-top_rated');
-    movieContainer.addEventListener('click', (event) => {
-      if (event.target.classList.contains('card-img-top')) {
-        const id = event.target.id.replace('img', '');
-        const movie = topRated.movieInfo(id);
-        displayMovieDetails(movie);
-        involvement.getComments(id).then((comments) => {
-          displayComments(comments);
-        });
-      }
-      if (event.target.classList.contains('card-title')) {
-        const id = event.target.id.replace('title', '');
-        const movie = topRated.movieInfo(id);
-        displayMovieDetails(movie);
-        involvement.getComments(id).then((comments) => {
-          displayComments(comments);
-        });
-      }
-      if (event.target.classList.contains('fa-comment-dots')) {
-        const id = event.target.id.replace('comment', '');
-        const movie = topRated.movieInfo(id);
-        displayMovieDetails(movie);
-        involvement.getComments(id).then((comments) => {
-          displayComments(comments);
-        });
-      }
-    });
+    addEventListenerToMovies('top_rated');
   });
 
   submitComment.addEventListener('click', (event) => {

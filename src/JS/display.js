@@ -1,6 +1,6 @@
 const addPopupToDom = () => {
   const popup = `<div class="popOverlay d-none"></div>
-    <div class="popContainer d-none">
+    <div class="popContainer d-none text-light">
         <i class="fas fa-times close-pop"></i>
         <div class='info'>
           <img id='poster' src="#" alt="poster">
@@ -16,13 +16,15 @@ const addPopupToDom = () => {
         </div>
         <div class="comments">
             <h2 class="comments-title title">Comments (<span class="comments-counter"></span>)</h2>
-            <ul class='comments-list'>
-                <li>
+            <div id='noCommentMessage'>
                     <p>No comments yet 😢 </p>
                     <p>Add you comment below ⤵️</p>
-                </li>
+            </div>
+            <ul class='comments-list'>
+                
             </ul>
         </div>
+        <input id='idHiddenInput' class='d-none>
         <div class="add-comment">
             <h2 class="add-comment title">Add a Comment</h2>
             <form action="#">
@@ -83,21 +85,21 @@ const displayMovieDetails = (movie) => {
 
 const displayComments = (comments) => {
   const list = document.querySelector('.comments-list');
-  if (comments.length !== 0 && comments !== undefined) {
+  const noCommentMessage = document.getElementById('noCommentMessage');
+  if(comments.length===0){
+    list.innerHTML = '';
+    noCommentMessage.classList.remove('d-none');
+  } else {
+    noCommentMessage.classList.add('d-none');
     list.innerHTML = '';
     comments.forEach((comment) => {
-      const container = document.createElement('li');
-      container.className = 'comment-container';
-      const time = document.createElement('p');
-      time.className = 'comment-time';
-      const name = document.createElement('p');
-      name.className = 'comment-name';
-      const description = document.createElement('p');
-      description.className = 'comment-description';
-      time.value = comment.creation_date;
-      name.value = comment.username;
-      description.value = comment.comment;
-      list.appendChild(container);
+      const container = `<li class=''comment-container>
+      <p class='comment-time'>${comment.creation_date}</p>
+      <p class='comment-name'>${comment.username}</p>
+      <p class='comment-description'>${comment.comment}</p>
+      </li>
+      `;
+      list.innerHTML+=container;
     });
   }
 };
