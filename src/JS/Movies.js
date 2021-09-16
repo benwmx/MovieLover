@@ -27,4 +27,12 @@ export default class Movies {
       });
     });
   }
+
+  movieInfo = (id) =>{
+    this.data.forEach((movie) =>{
+      if(movie.id === id){
+        return movie;
+      }
+    });
+  }
 }
