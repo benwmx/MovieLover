@@ -1,6 +1,7 @@
 
 .title {
   text-align: center;
+  margin: 30px auto;
 }
 
 .d-none {
@@ -33,12 +34,13 @@
   height: 90%;
   width: 60%;
   margin: 20px 20%;
-  padding: 20px;
+  padding: 40px 80px;
   top: 0;
   left: 0;
   bottom: 0;
   z-index: 2;
   background-color: rgb(255, 255, 255);
+  box-shadow: 4px 4px 20px rgb(207, 199, 199);
   border-radius: 5px;
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
@@ -58,24 +60,54 @@ img#poster {
   width: 40%;
   align-self: center;
   margin: 50px 0;
-  border: 5px dotted #54a4bd;
+  border: 3px solid #5abded;
 }
 
-.comments-title {
-  align-self: center;
-}
-
-.date-duration,
-.genre-rate {
+.date-vote {
   display: flex;
   justify-content: space-between;
-  padding: 10px 100px;
 }
 
-#title {
-  text-align: center;
+.comments-list {
+  padding-left: 0;
+  list-style: none;
 }
 
-.director {
-  padding: 10px 100px;
+.comment-container {
+  display: flex;
+  justify-content: space-between;
+  max-height: 100px;
+}
+
+.comment-container > * {
+  flex: 1;
+}
+
+.comment-description {
+  overflow-y: auto;
+  flex: 3;
+}
+
+.add-comment form {
+  display: flex;
+  flex-flow: column;
+  margin-bottom: 10px;
+  padding: 10px 50px;
+}
+
+.add-comment form > * {
+  margin: 10px 0 5px 0;
+}
+
+.add-comment form #submit {
+  width: 40%;
+  border: none;
+  padding: 5px;
+  box-shadow: 2px 2px 5px rgb(63, 59, 59);
+  border-radius: 2px;
+  background-color: #5abded;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  -ms-border-radius: 2px;
+  -o-border-radius: 2px;
 }

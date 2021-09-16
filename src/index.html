@@ -53,27 +53,39 @@
     <div class="popContainer">
         <i class="fas fa-times close-pop"></i>
         <img id='poster' src="#" alt="poster">
-        <h2 id="title">Title</h2>
-        <div class="date-duration">
-            <p class="date">Release Date : <span id="date">2021 September 24 </span> </p>
-            <p class="duration">Duration : <span id="duration">2h 17mins</span></p>
+        <h2 class="title">Title</h2>
+        <div class="date-vote">
+            <p class="release_date">Release Date : <span id="date">2021 September 24 </span> </p>
+            <p class="vote_average">Voting Average : <span id="vote">8</span></p>
         </div>
-        <div class="genre-rate">
-            <p class="genre">
-                Genres : <span id="genre">Drama, Musical </span> </p>
-            <p class="rating">
-                Content Rating : <span id="rating">PG-13</span>
+        <div class="overview">
+            <h4>Overview : </h4>
+            <p id="overview-txt">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut velit amet, corporis ad ab debitis
+                perferendis
+                accusamus doloremque blanditiis culpa voluptatibus fugit iste veritatis reprehenderit sunt esse? Velit,
+                accusantium laboriosam!
             </p>
         </div>
-        <p class="director">Director : <span id="director">Rachid Boudfarigh</span></p>
-        <div class="description">
-
-        </div>
-        <div class="comments-title">
-            <h2>Comments (<span id="comments-counter">12</span>)</h2>
-            <ul id='comments'>
-
+        <div class="comments">
+            <h2 class="comments-title title">Comments (<span class="comments-counter"></span>)</h2>
+            <ul class='comments-list'>
+                <li>
+                    <p>No comments yet 😢 </p>
+                    <p>Add you comment below ⤵️</p>
+                </li>
             </ul>
+        </div>
+        <div class="add-comment">
+            <h2 class="add-comment title">Add a Comment</h2>
+            <form action="#">
+                <label for="your-name">Name:</label>
+                <input id="your-name" type="text" placeholder="Your Name">
+                <label for="add-comment-description">Comment:</label>
+                <textarea name="comment" id="add-comment-description" cols="30" rows="6" placeholder="Comment">
+                </textarea>
+                <button id="submit" type="submit">Comment</button>
+            </form>
         </div>
     </div>
 
