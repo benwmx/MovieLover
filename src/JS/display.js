@@ -1,5 +1,5 @@
-const displayMovies = (data, elementId) => {
-  const section = document.getElementById(elementId);
+const displayMovies = (data, sectionId) => {
+  const section = document.getElementById(sectionId);
   const list = document.createElement('div');
   list.id = 'list';
   list.classList.add('list');
