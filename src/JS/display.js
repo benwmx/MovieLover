@@ -24,7 +24,7 @@ const addPopupToDom = () => {
                 
             </ul>
         </div>
-        <input id='idHiddenInput' class='d-none>
+        <input id='idHiddenInput' class='d-none'>
         <div class="add-comment">
             <h2 class="add-comment title">Add a Comment</h2>
             <form action="#">
@@ -37,6 +37,7 @@ const addPopupToDom = () => {
         </div>
     </div>`;
   document.body.innerHTML += popup;
+  console.log(document.body.innerHTML);
 };
 
 const displayMovies = (data, sectionId) => {

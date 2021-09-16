@@ -19,7 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const closeBtn = document.querySelector('.close-pop');
   const overlay = document.querySelector('.popOverlay');
   const popup = document.querySelector('.popContainer');
-  
   const getAndDisplayMovieDetails = (id) => {
     const movie = upcoming.movieInfo(id);
         displayMovieDetails(movie);
@@ -63,9 +62,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   submitComment.addEventListener('click', (event) => {
     event.preventDefault();
-    involvement.addComment(commentId, name.value, commentDescription.value).then(() => {
-      involvement.getComments(commentId).then((data) => {
-        displayComments(data);
+    const id =document.getElementById('idHiddenInput').value;
+    console.log(id);
+    involvement.addComment(id, name.value, commentDescription.value).then(() => {
+      involvement.getComments(id).then(() => {
+        displayComments(involvement.popupComments);
       });
     });
   });
