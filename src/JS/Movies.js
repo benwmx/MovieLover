@@ -19,7 +19,7 @@ export default class Movies {
     data.forEach((movie) => {
       this.data.push({
         title: movie.title,
-        image: `https://image.tmdb.org/t/p/w500'${movie.poster_path}`,
+        image: `https://image.tmdb.org/t/p/w500${movie.poster_path}`,
         id: movie.id,
         overview: movie.overview,
         release_date: movie.release_date,
@@ -28,11 +28,13 @@ export default class Movies {
     });
   }
 
-  movieInfo = (id) =>{
-    this.data.forEach((movie) =>{
-      if(movie.id === id){
-        return movie;
+  movieInfo = (id) => {
+    let clickedMovie = null;
+    this.data.forEach((movie) => {
+      if (movie.id === parseInt(id, 10)) {
+        clickedMovie = movie;
       }
     });
+    return clickedMovie;
   }
 }
