@@ -19,8 +19,8 @@ export default class InvolvementAPI {
   async getComments(id) {
     const endPoint = `${this.url}?item_id=${id}`;
     this.popupComments = [];
-    await fetch(endPoint).then((res) => res.json()).then((data)=> {
-      if(data.error===undefined){
+    await fetch(endPoint).then((res) => res.json()).then((data) => {
+      if (data.error === undefined) {
         this.popupComments = data;
       }
     });

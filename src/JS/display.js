@@ -93,13 +93,13 @@ const displayComments = (comments) => {
     noCommentMessage.classList.add('d-none');
     list.innerHTML = '';
     comments.forEach((comment) => {
-      const container = `<li class=''comment-container>
+      const container = `<li class='comment-container'>
       <p class='comment-time'>${comment.creation_date}</p>
       <p class='comment-name'>${comment.username}</p>
       <p class='comment-description'>${comment.comment}</p>
       </li>
       `;
-      list.innerHTML+=container;
+      list.innerHTML += container;
     });
   }
 };
