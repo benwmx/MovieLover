@@ -29,15 +29,14 @@ const addPopupToDom = () => {
             <h2 class="add-comment title">Add a Comment</h2>
             <form action="#">
                 <label for="name">Name:</label>
-                <input id="name" type="text" placeholder="Your Name" required>
+                <input id="name" type="text" placeholder="Rachid Ahmad" required>
                 <label for="comment-description">Comment:</label>
-                <textarea name="comment" id="comment-description" cols="30" rows="6" placeholder="Comment" required></textarea>
+                <textarea name="comment" id="comment-description" cols="30" rows="6" placeholder="it is amazing !" required></textarea>
                 <button id="submit" type="submit">Comment</button>
             </form>
         </div>
     </div>`;
   document.body.innerHTML += popup;
-  console.log(document.body.innerHTML);
 };
 
 const displayMovies = (data, sectionId) => {
@@ -87,24 +86,30 @@ const displayMovieDetails = (movie) => {
 const displayComments = (comments) => {
   const list = document.querySelector('.comments-list');
   const noCommentMessage = document.getElementById('noCommentMessage');
-  if(comments.length===0){
+  if (comments.length === 0) {
     list.innerHTML = '';
     noCommentMessage.classList.remove('d-none');
   } else {
     noCommentMessage.classList.add('d-none');
     list.innerHTML = '';
     comments.forEach((comment) => {
-      const container = `<li class=''comment-container>
+      const container = `<li class='comment-container'>
       <p class='comment-time'>${comment.creation_date}</p>
       <p class='comment-name'>${comment.username}</p>
       <p class='comment-description'>${comment.comment}</p>
       </li>
       `;
-      list.innerHTML+=container;
+      list.innerHTML += container;
     });
   }
 };
 
+const clearCommentForm = () => {
+  document.getElementById('name').value = '';
+  document.getElementById('comment-description').value = '';
+};
+
 export {
-  addPopupToDom, displayMovies, displayMovieDetails, displayComments,
+  addPopupToDom, displayMovies, displayMovieDetails
+  , displayComments, clearCommentForm,
 };
