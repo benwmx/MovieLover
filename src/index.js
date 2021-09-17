@@ -42,16 +42,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const movieContainer = document.getElementById(`list-${elementId}`);
     movieContainer.addEventListener('click', (event) => {
       let id = null;
+      let shouldOpenPopup = false;
       if (event.target.classList.contains('card-img-top')) {
         id = event.target.id.replace('img', '');
+        shouldOpenPopup = true;
       }
       if (event.target.classList.contains('card-title')) {
         id = event.target.id.replace('title', '');
+        shouldOpenPopup = true;
       }
       if (event.target.classList.contains('fa-comment-dots')) {
         id = event.target.id.replace('comment', '');
+        shouldOpenPopup = true;
       }
-      getAndDisplayMovieDetails(id, elementId);
+      if(shouldOpenPopup) {
+        getAndDisplayMovieDetails(id, elementId);
+      }
     });
   };
 
@@ -71,7 +77,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   submitComment.addEventListener('click', (event) => {
-    event.preventDefault();
     const id = document.getElementById('idHiddenInput').value;
     involvement.addComment(id, name.value, commentDescription.value).then(() => {
       involvement.getComments(id).then(() => {
