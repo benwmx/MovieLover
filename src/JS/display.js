@@ -107,7 +107,6 @@ const displayComments = (comments) => {
 
 const displayCommentsCounter = (counter, place) => {
   if (place === 'popup') document.querySelector('#comments-counter-popup').innerText = counter;
-  if (place === 'home') document.querySelector('#comments-counter-home').innerText = counter;
 };
 
 const clearCommentForm = () => {

@@ -4,7 +4,7 @@ import {
   displayMovies, displayMovieDetails, displayComments,
   addPopupToDom, clearCommentForm, displayCommentsCounter,
 } from './JS/display.js';
-import { commentsCounter } from './JS/counters.js';
+import commentsCounter from './JS/counters.js';
 import Movies from './JS/Movies.js';
 import InvolvementAPI from './JS/involvementAPI.js';
 
