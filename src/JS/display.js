@@ -33,6 +33,7 @@ const addPopupToDom = () => {
                 <label for="comment-description">Comment:</label>
                 <textarea name="comment" id="comment-description" cols="30" rows="6" placeholder="it is amazing !" required></textarea>
                 <button id="submit" type="submit">Comment</button>
+                <p id='submitError'  class='text-danger'>Values are Required</p>
             </form>
         </div>
     </div>`;
@@ -105,8 +106,10 @@ const displayComments = (comments) => {
 };
 
 const clearCommentForm = () => {
+  const submitError = document.getElementById('submitError');
   document.getElementById('name').value = '';
   document.getElementById('comment-description').value = '';
+  submitError.classList.add('d-none');
 };
 
 export {

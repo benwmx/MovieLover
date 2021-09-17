@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const closeBtn = document.querySelector('.close-pop');
   const overlay = document.querySelector('.popOverlay');
   const popup = document.querySelector('.popContainer');
+  const submitError = document.getElementById('submitError');
   const getAndDisplayMovieDetails = (id, elementId) => {
     let movie = null;
     switch (elementId) {
@@ -56,6 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
         shouldOpenPopup = true;
       }
       if(shouldOpenPopup) {
+        clearCommentForm();
         getAndDisplayMovieDetails(id, elementId);
       }
     });
@@ -78,12 +80,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
   submitComment.addEventListener('click', (event) => {
     const id = document.getElementById('idHiddenInput').value;
+    if(name.value ==='' || commentDescription.value === ''){
+      submitError.classList.remove('d-none');
+    }
+    else{
     involvement.addComment(id, name.value, commentDescription.value).then(() => {
       involvement.getComments(id).then(() => {
-        displayComments(involvement.popupComments);
+        displayComments(involvement.popupComments); 
       });
     });
     clearCommentForm();
+  }
   });
   closeBtn.addEventListener('click', () => {
     popup.classList.add('d-none');
