@@ -2,7 +2,7 @@ import './CSS/style.css';
 import './CSS/popup.css';
 import {
   displayMovies, displayMovieDetails, displayComments,
-  addPopupToDom, clearCommentForm, displayCommentsCounter,
+  addPopupToDom, clearCommentForm, displayCommentsCounter, displayAllLikes, incrementLike
 } from './JS/display.js';
 import { commentsCounter } from './JS/counters.js';
 import Movies from './JS/Movies.js';
@@ -47,6 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
     movieContainer.addEventListener('click', (event) => {
       let id = null;
       let shouldOpenPopup = false;
+      console.log(event.target);
       if (event.target.classList.contains('card-img-top')) {
         id = event.target.id.replace('img', '');
         shouldOpenPopup = true;
@@ -59,6 +60,14 @@ document.addEventListener('DOMContentLoaded', () => {
         id = event.target.id.replace('comment', '');
         shouldOpenPopup = true;
       }
+      if(event.target.classList.contains('fa-heart')){
+        id = event.target.id.replace('like', '');
+        console.log(id);
+        involvement.addLike(id).then(() => {
+          incrementLike(id);
+        });
+        
+      }
       if (shouldOpenPopup) {
         clearCommentForm();
         getAndDisplayMovieDetails(id, elementId);
@@ -69,6 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
   upcoming.getData().then(() => {
     displayMovies(upcoming.data, 'upcoming');
     addEventListenerToMovies('upcoming');
+
   });
 
   popular.getData().then(() => {
@@ -80,6 +90,12 @@ document.addEventListener('DOMContentLoaded', () => {
     displayMovies(topRated.data, 'top_rated');
     addEventListenerToMovies('top_rated');
   });
+  involvement.addLike(1).then(() => {
+    involvement.getLikes().then(() => {
+      displayAllLikes(involvement.likes);
+    });
+  })
+  
 
   submitComment.addEventListener('click', (event) => {
     event.preventDefault();
