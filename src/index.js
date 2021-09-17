@@ -3,7 +3,7 @@ import './CSS/popup.css';
 import {
   displayMovies, displayMovieDetails, displayComments,
   addPopupToDom, clearCommentForm, displayCommentsCounter,
-  displayAllLikes, incrementLike, updateLikeIcon,
+  displayAllLikes, incrementLike, updateLikeIcon, displayMoviesCounter
 } from './JS/display.js';
 import { commentsCounter } from './JS/counters.js';
 import Movies from './JS/Movies.js';
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const overlay = document.querySelector('.popOverlay');
   const popup = document.querySelector('.popContainer');
   const submitError = document.getElementById('submitError');
-
+  const counter = null;
   const markAllUserLikedItems = () => {
     if (userlikes.data !== null) {
       userlikes.data.forEach((itemId) => {
@@ -88,16 +88,22 @@ document.addEventListener('DOMContentLoaded', () => {
   upcoming.getData().then(() => {
     displayMovies(upcoming.data, 'upcoming');
     addEventListenerToMovies('upcoming');
+    counter = moviesCounter(upcoming.data);
+    displayMoviesCounter(counter, 'upcoming');
   });
 
   popular.getData().then(() => {
     displayMovies(popular.data, 'popular');
     addEventListenerToMovies('popular');
+    counter = moviesCounter(popular.data);
+    displayMoviesCounter(counter, 'popular');
   });
 
   topRated.getData().then(() => {
     displayMovies(topRated.data, 'top_rated');
     addEventListenerToMovies('top_rated');
+    counter = moviesCounter(topRated.data);
+    displayMoviesCounter(counter, 'top_rated');
   });
 
   involvement.getLikes().then(() => {
