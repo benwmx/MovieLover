@@ -63,7 +63,6 @@ const displayMovies = (data, sectionId) => {
       list.insertAdjacentHTML('beforeend', card);
     });
   }
-  section.innerHTML = '';
   section.appendChild(list);
 };
 
@@ -109,6 +108,10 @@ const displayCommentsCounter = (counter) => {
   document.querySelector('#comments-counter-popup').innerText = counter;
 };
 
+const displayMoviesCounter = (counter, section) => {
+  document.getElementById(`${section}-movies-counter`).innerText = counter;
+};
+
 const clearCommentForm = () => {
   const submitError = document.getElementById('submitError');
   document.getElementById('name').value = '';
@@ -147,5 +150,5 @@ const updateLikeIcon = (id) => {
 export {
   addPopupToDom, displayMovies, displayMovieDetails
   , displayComments, clearCommentForm,
-  displayCommentsCounter, displayAllLikes, incrementLike, updateLikeIcon,
+  displayCommentsCounter, displayAllLikes, incrementLike, updateLikeIcon, displayMoviesCounter,
 };
