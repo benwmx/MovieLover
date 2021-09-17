@@ -53,7 +53,7 @@ const displayMovies = (data, sectionId) => {
     <div class="card-body d-flex flex-column align-items-start">
     <div>
     <div class=''>
-    <i id ="likes${id}" class="far fa-heart text-danger my-2"></i> (<span class="likes">0</span>)
+    <i id ="like${id}" class="far fa-heart text-danger my-2"></i> <span id= 'likeCounter${id}' class="likes"></span>
     <i id ="comment${id}" class="fas fa-comment-dots mx-2"></i>
     </div>
     </div>
@@ -105,9 +105,8 @@ const displayComments = (comments) => {
   }
 };
 
-const displayCommentsCounter = (counter, place) => {
-  if (place === 'popup') document.querySelector('#comments-counter-popup').innerText = counter;
-  if (place === 'home') document.querySelector('#comments-counter-home').innerText = counter;
+const displayCommentsCounter = (counter) => {
+  document.querySelector('#comments-counter-popup').innerText = counter;
 };
 
 const clearCommentForm = () => {
@@ -117,8 +116,36 @@ const clearCommentForm = () => {
   submitError.classList.add('d-none');
 };
 
+const displayAllLikes = (likes) => {
+  likes.forEach((like) => {
+    const likeLabelId = `likeCounter${like.item_id}`;
+    const likeLabel = document.getElementById(likeLabelId);
+    const likesCount = like.likes;
+    if (likeLabel !== null) {
+      likeLabel.innerHTML = likesCount;
+    }
+  });
+};
+
+const incrementLike = (id) => {
+  const likeLabelId = `likeCounter${id}`;
+  const likeLabel = document.getElementById(likeLabelId);
+  const likeCount = likeLabel.innerHTML;
+  if (likeCount === '') {
+    likeLabel.innerHTML = 1;
+  } else {
+    likeLabel.innerHTML = parseInt(likeCount, 10) + 1;
+  }
+};
+
+const updateLikeIcon = (id) => {
+  const likeIcon = document.getElementById(`like${id}`);
+  likeIcon.classList.remove('far');
+  likeIcon.classList.add('fas');
+};
+
 export {
   addPopupToDom, displayMovies, displayMovieDetails
   , displayComments, clearCommentForm,
-  displayCommentsCounter,
+  displayCommentsCounter, displayAllLikes, incrementLike, updateLikeIcon,
 };
