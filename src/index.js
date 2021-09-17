@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const closeBtn = document.querySelector('.close-pop');
   const overlay = document.querySelector('.popOverlay');
   const popup = document.querySelector('.popContainer');
+  const submitError = document.getElementById('submitError');
   const getAndDisplayMovieDetails = (id, elementId) => {
     let movie = null;
     switch (elementId) {
@@ -42,16 +43,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const movieContainer = document.getElementById(`list-${elementId}`);
     movieContainer.addEventListener('click', (event) => {
       let id = null;
+      let shouldOpenPopup = false;
       if (event.target.classList.contains('card-img-top')) {
         id = event.target.id.replace('img', '');
+        shouldOpenPopup = true;
       }
       if (event.target.classList.contains('card-title')) {
         id = event.target.id.replace('title', '');
+        shouldOpenPopup = true;
       }
       if (event.target.classList.contains('fa-comment-dots')) {
         id = event.target.id.replace('comment', '');
+        shouldOpenPopup = true;
       }
-      getAndDisplayMovieDetails(id, elementId);
+      if (shouldOpenPopup) {
+        clearCommentForm();
+        getAndDisplayMovieDetails(id, elementId);
+      }
     });
   };
 
@@ -70,15 +78,18 @@ document.addEventListener('DOMContentLoaded', () => {
     addEventListenerToMovies('top_rated');
   });
 
-  submitComment.addEventListener('click', (event) => {
-    event.preventDefault();
+  submitComment.addEventListener('click', () => {
     const id = document.getElementById('idHiddenInput').value;
-    involvement.addComment(id, name.value, commentDescription.value).then(() => {
-      involvement.getComments(id).then(() => {
-        displayComments(involvement.popupComments);
+    if (name.value === '' || commentDescription.value === '') {
+      submitError.classList.remove('d-none');
+    } else {
+      involvement.addComment(id, name.value, commentDescription.value).then(() => {
+        involvement.getComments(id).then(() => {
+          displayComments(involvement.popupComments);
+        });
       });
-    });
-    clearCommentForm();
+      clearCommentForm();
+    }
   });
   closeBtn.addEventListener('click', () => {
     popup.classList.add('d-none');
