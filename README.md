@@ -9,9 +9,15 @@
 ![](./img/scs1.png)
 ![](./img/scs2.png)
 
+## Demo Video
+
+https://user-images.githubusercontent.com/60202444/133863713-7d8646df-91c0-4af3-b8ce-54d6b03be870.mp4
+
 ## Unit Testing [jest](https://jestjs.io/)
 You can run unit test using this command `npm run test`
 These are list of test we have writed:
+
+
 ![](./img/test.png)
 
 ## Built with
@@ -22,9 +28,10 @@ These are list of test we have writed:
 - Webpack
 
 ## Live Demo
+
 Deployed to Github Pages
 
-[Live Demo Link](#)
+[Live Demo Link](https://benwmx.github.io/Javascript-capstone/)
 
 ## Getting Started
 
