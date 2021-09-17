@@ -1,4 +1,4 @@
-const commentCounter = (comments) => comments.length;
+const commentsCounter = (comments) => comments.length;
 const likesCounter = (likes) => likes.length;
 
-export { commentCounter, likesCounter };
+export { commentsCounter, likesCounter };

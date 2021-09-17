@@ -2,8 +2,9 @@ import './CSS/style.css';
 import './CSS/popup.css';
 import {
   displayMovies, displayMovieDetails, displayComments,
-  addPopupToDom, clearCommentForm,
+  addPopupToDom, clearCommentForm, displayCommentsCounter,
 } from './JS/display.js';
+import { commentsCounter } from './JS/counters.js';
 import Movies from './JS/Movies.js';
 import InvolvementAPI from './JS/involvementAPI.js';
 
@@ -21,6 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const overlay = document.querySelector('.popOverlay');
   const popup = document.querySelector('.popContainer');
   const submitError = document.getElementById('submitError');
+
   const getAndDisplayMovieDetails = (id, elementId) => {
     let movie = null;
     switch (elementId) {
@@ -35,6 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
     displayMovieDetails(movie);
     involvement.getComments(id).then(() => {
       displayComments(involvement.popupComments);
+      displayCommentsCounter(commentsCounter(involvement.popupComments), 'popup');
     });
     document.getElementById('idHiddenInput').value = id;
   };
@@ -86,6 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
       involvement.addComment(id, name.value, commentDescription.value).then(() => {
         involvement.getComments(id).then(() => {
           displayComments(involvement.popupComments);
+          displayCommentsCounter(commentsCounter(involvement.popupComments), 'popup');
         });
       });
       clearCommentForm();
