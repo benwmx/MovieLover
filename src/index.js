@@ -72,11 +72,13 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       if (event.target.classList.contains('fa-heart')) {
         id = event.target.id.replace('like', '');
-        involvement.addLike(id).then(() => {
-          incrementLike(id);
-          updateLikeIcon(id);
-          userlikes.pushItem(id);
-        });
+        if (!userlikes.containItem(id)) {
+          involvement.addLike(id).then(() => {
+            incrementLike(id);
+            updateLikeIcon(id);
+            userlikes.pushItem(id);
+          });
+        }
       }
       if (shouldOpenPopup) {
         clearCommentForm();

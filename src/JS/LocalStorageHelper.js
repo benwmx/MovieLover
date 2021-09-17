@@ -20,4 +20,9 @@ export default class LocalStorageHelper {
     this.data.push(item);
     this.setItems();
   }
+
+  containItem(itemsId) {
+    if (this.data.indexOf(itemsId) === -1) return false;
+    return true;
+  }
 }
