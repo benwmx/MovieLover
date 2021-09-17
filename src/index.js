@@ -1,7 +1,8 @@
 import './CSS/style.css';
 import './CSS/popup.css';
 import {
-  displayMovies, displayMovieDetails, displayComments, addPopupToDom,
+  displayMovies, displayMovieDetails, displayComments,
+  addPopupToDom, clearCommentForm,
 } from './JS/display.js';
 import Movies from './JS/Movies.js';
 import InvolvementAPI from './JS/involvementAPI.js';
@@ -77,6 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
         displayComments(involvement.popupComments);
       });
     });
+    clearCommentForm();
   });
   closeBtn.addEventListener('click', () => {
     popup.classList.add('d-none');

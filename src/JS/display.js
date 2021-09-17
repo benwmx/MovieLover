@@ -29,9 +29,9 @@ const addPopupToDom = () => {
             <h2 class="add-comment title">Add a Comment</h2>
             <form action="#">
                 <label for="name">Name:</label>
-                <input id="name" type="text" placeholder="Your Name" required>
+                <input id="name" type="text" placeholder="Rachid Ahmad" required>
                 <label for="comment-description">Comment:</label>
-                <textarea name="comment" id="comment-description" cols="30" rows="6" placeholder="Comment" required></textarea>
+                <textarea name="comment" id="comment-description" cols="30" rows="6" placeholder="it is amazing !" required></textarea>
                 <button id="submit" type="submit">Comment</button>
             </form>
         </div>
@@ -104,6 +104,12 @@ const displayComments = (comments) => {
   }
 };
 
+const clearCommentForm = () => {
+  document.getElementById('name').value = '';
+  document.getElementById('comment-description').value = '';
+};
+
 export {
-  addPopupToDom, displayMovies, displayMovieDetails, displayComments,
+  addPopupToDom, displayMovies, displayMovieDetails
+  , displayComments, clearCommentForm,
 };
