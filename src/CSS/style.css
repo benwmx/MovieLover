@@ -11,6 +11,12 @@ body {
 
 .card-img-top,
 .card-title,
-.fa-comment-dots {
+.fa-comment-dots,
+.fa-heart {
   cursor: pointer;
+}
+
+.fa-comment-dots,
+.fa-heart {
+  font-size: 20px;
 }

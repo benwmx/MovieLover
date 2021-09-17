@@ -15,7 +15,7 @@ const addPopupToDom = () => {
           </div>  
         </div>
         <div class="comments">
-            <h2 class="comments-title title">Comments (<span class="comments-counter"></span>)</h2>
+            <h2 class="comments-title title">Comments (<span id="comments-counter-popup"></span>)</h2>
             <div id='noCommentMessage'>
                     <p>No comments yet 😢 </p>
                     <p>Add you comment below ⤵️</p>
@@ -50,14 +50,14 @@ const displayMovies = (data, sectionId) => {
       const { image, id, title } = row;
       const card = `<div id="${id}" class="card m-2 bg-dark text-light" style="width: 12rem;">
     <img id ="img${id}" src="${image}" class="card-img-top" alt="${title}">
-    <div class="card-body d-flex flex-column justify-content-between align-items-start">
+    <div class="card-body d-flex flex-column align-items-start">
+    <div>
+    <div class=''>
+    <i id ="likes${id}" class="far fa-heart text-danger my-2"></i> (<span class="likes">0</span>)
+    <i id ="comment${id}" class="fas fa-comment-dots mx-2"></i>
+    </div>
+    </div>
       <h5 id ="title${id}" class="card-title">${title}</h5>
-      <div>
-      <div class='my-2'>
-      <i id ="likes${id}" class="far fa-heart text-danger my-3"></i> <span class="likes"></span>
-      <i id ="comment${id}" class="fas fa-comment-dots mx-2"></i> <span class="comments-counter"></span>
-      </div>
-      </div>
     </div>
     </div>`;
       list.insertAdjacentHTML('beforeend', card);
@@ -105,6 +105,11 @@ const displayComments = (comments) => {
   }
 };
 
+const displayCommentsCounter = (counter, place) => {
+  if (place === 'popup') document.querySelector('#comments-counter-popup').innerText = counter;
+  if (place === 'home') document.querySelector('#comments-counter-home').innerText = counter;
+};
+
 const clearCommentForm = () => {
   const submitError = document.getElementById('submitError');
   document.getElementById('name').value = '';
@@ -115,4 +120,5 @@ const clearCommentForm = () => {
 export {
   addPopupToDom, displayMovies, displayMovieDetails
   , displayComments, clearCommentForm,
+  displayCommentsCounter,
 };
