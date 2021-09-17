@@ -150,5 +150,5 @@ const updateLikeIcon = (id) => {
 export {
   addPopupToDom, displayMovies, displayMovieDetails
   , displayComments, clearCommentForm,
-  displayCommentsCounter, displayAllLikes, incrementLike, updateLikeIcon, displayMoviesCounter
+  displayCommentsCounter, displayAllLikes, incrementLike, updateLikeIcon, displayMoviesCounter,
 };

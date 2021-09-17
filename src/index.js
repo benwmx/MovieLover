@@ -3,7 +3,7 @@ import './CSS/popup.css';
 import {
   displayMovies, displayMovieDetails, displayComments,
   addPopupToDom, clearCommentForm, displayCommentsCounter,
-  displayAllLikes, incrementLike, updateLikeIcon, displayMoviesCounter
+  displayAllLikes, incrementLike, updateLikeIcon, displayMoviesCounter,
 } from './JS/display.js';
 import { commentsCounter, moviesCounter } from './JS/counters.js';
 import Movies from './JS/Movies.js';
