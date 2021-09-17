@@ -5,7 +5,7 @@ import {
   addPopupToDom, clearCommentForm, displayCommentsCounter,
   displayAllLikes, incrementLike, updateLikeIcon, displayMoviesCounter
 } from './JS/display.js';
-import { commentsCounter } from './JS/counters.js';
+import { commentsCounter, moviesCounter } from './JS/counters.js';
 import Movies from './JS/Movies.js';
 import InvolvementAPI from './JS/involvementAPI.js';
 import LocalStorageHelper from './JS/LocalStorageHelper.js';
@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const overlay = document.querySelector('.popOverlay');
   const popup = document.querySelector('.popContainer');
   const submitError = document.getElementById('submitError');
-  const counter = null;
+  let counter = null;
   const markAllUserLikedItems = () => {
     if (userlikes.data !== null) {
       userlikes.data.forEach((itemId) => {

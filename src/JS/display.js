@@ -63,7 +63,6 @@ const displayMovies = (data, sectionId) => {
       list.insertAdjacentHTML('beforeend', card);
     });
   }
-  section.innerHTML = '';
   section.appendChild(list);
 };
 
