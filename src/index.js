@@ -2,7 +2,8 @@ import './CSS/style.css';
 import './CSS/popup.css';
 import {
   displayMovies, displayMovieDetails, displayComments,
-  addPopupToDom, clearCommentForm, displayCommentsCounter, displayAllLikes, incrementLike,updateLikeIcon, 
+  addPopupToDom, clearCommentForm, displayCommentsCounter,
+  displayAllLikes, incrementLike, updateLikeIcon,
 } from './JS/display.js';
 import { commentsCounter } from './JS/counters.js';
 import Movies from './JS/Movies.js';
@@ -24,14 +25,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const overlay = document.querySelector('.popOverlay');
   const popup = document.querySelector('.popContainer');
   const submitError = document.getElementById('submitError');
-  
+
   const markAllUserLikedItems = () => {
-    if(userlikes.data!==null){
+    if (userlikes.data !== null) {
       userlikes.data.forEach((itemId) => {
         updateLikeIcon(itemId);
       });
     }
-  }
+  };
 
   const getAndDisplayMovieDetails = (id, elementId) => {
     let movie = null;
@@ -69,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
         id = event.target.id.replace('comment', '');
         shouldOpenPopup = true;
       }
-      if(event.target.classList.contains('fa-heart')){
+      if (event.target.classList.contains('fa-heart')) {
         id = event.target.id.replace('like', '');
         involvement.addLike(id).then(() => {
           incrementLike(id);
@@ -87,7 +88,6 @@ document.addEventListener('DOMContentLoaded', () => {
   upcoming.getData().then(() => {
     displayMovies(upcoming.data, 'upcoming');
     addEventListenerToMovies('upcoming');
-
   });
 
   popular.getData().then(() => {
@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
     displayAllLikes(involvement.likes);
     markAllUserLikedItems();
   });
-  
+
   submitComment.addEventListener('click', (event) => {
     event.preventDefault();
     const id = document.getElementById('idHiddenInput').value;

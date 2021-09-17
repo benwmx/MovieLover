@@ -28,13 +28,13 @@ export default class InvolvementAPI {
     });
   }
 
-  async addLike(item_id) {
-  const endPoint = `${this.url}/likes`;
+  async addLike(itemId) {
+    const endPoint = `${this.url}/likes`;
     await fetch(endPoint, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        item_id
+        item_id: itemId,
       }),
     });
   }

@@ -117,33 +117,32 @@ const clearCommentForm = () => {
 };
 
 const displayAllLikes = (likes) => {
-  likes.forEach((like) =>{
+  likes.forEach((like) => {
     const likeLabelId = `likeCounter${like.item_id}`;
     const likeLabel = document.getElementById(likeLabelId);
     const likesCount = like.likes;
-    if(likeLabel!==null){
+    if (likeLabel !== null) {
       likeLabel.innerHTML = likesCount;
     }
   });
-}
+};
 
 const incrementLike = (id) => {
   const likeLabelId = `likeCounter${id}`;
   const likeLabel = document.getElementById(likeLabelId);
   const likeCount = likeLabel.innerHTML;
-  if(likeCount==''){
+  if (likeCount === '') {
     likeLabel.innerHTML = 1;
+  } else {
+    likeLabel.innerHTML = parseInt(likeCount, 10) + 1;
   }
-  else{
-    likeLabel.innerHTML = parseInt(likeCount)+1;
-  }
-}
+};
 
 const updateLikeIcon = (id) => {
-  const likeIcon =document.getElementById(`like${id}`);
+  const likeIcon = document.getElementById(`like${id}`);
   likeIcon.classList.remove('far');
   likeIcon.classList.add('fas');
-}
+};
 
 export {
   addPopupToDom, displayMovies, displayMovieDetails
