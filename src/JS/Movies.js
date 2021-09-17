@@ -14,6 +14,7 @@ export default class Movies {
         this.filterData(data.results);
       });
   }
+
   filterData = (data) => {
     data.forEach((movie) => {
       this.data.push({
