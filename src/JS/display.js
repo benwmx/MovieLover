@@ -138,6 +138,13 @@ const incrementLike = (id) => {
   else{
     likeLabel.innerHTML = parseInt(likeCount)+1;
   }
+  updateLikeIcon(id);
+}
+
+const updateLikeIcon = (id) => {
+  const likeIcon =document.getElementById(`like${id}`);
+  likeIcon.classList.remove('far');
+  likeIcon.classList.add('fas');
 }
 
 export {
