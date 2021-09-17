@@ -81,7 +81,8 @@ document.addEventListener('DOMContentLoaded', () => {
     addEventListenerToMovies('top_rated');
   });
 
-  submitComment.addEventListener('click', () => {
+  submitComment.addEventListener('click', (event) => {
+    event.preventDefault();
     const id = document.getElementById('idHiddenInput').value;
     if (name.value === '' || commentDescription.value === '') {
       submitError.classList.remove('d-none');

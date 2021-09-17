@@ -15,3 +15,10 @@ body {
 .fa-heart {
   cursor: pointer;
 }
+
+.fa-comment-dots,
+.fa-heart{
+  font-size: 20px;
+}
+
+
