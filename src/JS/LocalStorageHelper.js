@@ -1,21 +1,18 @@
-export default class LocalStorage {
+export default class LocalStorageHelper {
     constructor(itemName){
-        window.localStorage.setItem(itemName, JSON.stringify(data));
-        this.data = null;
+        this.data = [];
         this.itemName = itemName;
         this.getItems();
     }
     getItems(){
-        this.data = JSON.parse(window.localStorage.getItem(this.itemName));
+        const dataFromLocalStorage = JSON.parse(localStorage.getItem(this.itemName));
+        if(dataFromLocalStorage!==null){
+            this.data = dataFromLocalStorage;
+        }
     }
 
     setItems(){
-        window.localStorage.setItem(this.itemName, JSON.stringify(this.data));
-    }
-
-    setItems(data){
-        this.data = data;
-        this.setItems();
+        localStorage.setItem(this.itemName, JSON.stringify(this.data));
     }
 
     findIndexinData(id){
@@ -29,12 +26,17 @@ export default class LocalStorage {
         return -1;
     }
 
-    setItem(index,newItem){
+    setItem(index, newItem){
         this.data[index] = newItem;
         this.setItems();
     }
 
     getItem(index){
         return this.data[index];
+    }
+
+    pushItem(item){
+        this.data.push(item);
+        this.setItems();
     }
 }

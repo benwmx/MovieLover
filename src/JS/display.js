@@ -1,4 +1,3 @@
-import LocalStorage  from "./LocalStorage";
 const addPopupToDom = () => {
   const popup = `<div class="popOverlay d-none"></div>
     <div class="popContainer d-none text-light">
@@ -106,9 +105,8 @@ const displayComments = (comments) => {
   }
 };
 
-const displayCommentsCounter = (counter, place) => {
-  if (place === 'popup') document.querySelector('#comments-counter-popup').innerText = counter;
-  if (place === 'home') document.querySelector('#comments-counter-home').innerText = counter;
+const displayCommentsCounter = (counter) => {
+  document.querySelector('#comments-counter-popup').innerText = counter;
 };
 
 const clearCommentForm = () => {
@@ -139,7 +137,6 @@ const incrementLike = (id) => {
   else{
     likeLabel.innerHTML = parseInt(likeCount)+1;
   }
-  updateLikeIcon(id);
 }
 
 const updateLikeIcon = (id) => {
@@ -148,12 +145,8 @@ const updateLikeIcon = (id) => {
   likeIcon.classList.add('fas');
 }
 
-const markAllUserLikedItems = () => {
-
-}
-
 export {
   addPopupToDom, displayMovies, displayMovieDetails
   , displayComments, clearCommentForm,
-  displayCommentsCounter, displayAllLikes, incrementLike
+  displayCommentsCounter, displayAllLikes, incrementLike, updateLikeIcon,
 };

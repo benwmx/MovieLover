@@ -2,16 +2,18 @@ import './CSS/style.css';
 import './CSS/popup.css';
 import {
   displayMovies, displayMovieDetails, displayComments,
-  addPopupToDom, clearCommentForm, displayCommentsCounter, displayAllLikes, incrementLike, markAllUserLikedItems
+  addPopupToDom, clearCommentForm, displayCommentsCounter, displayAllLikes, incrementLike,updateLikeIcon, 
 } from './JS/display.js';
 import { commentsCounter } from './JS/counters.js';
 import Movies from './JS/Movies.js';
 import InvolvementAPI from './JS/involvementAPI.js';
+import LocalStorageHelper from './JS/LocalStorageHelper.js';
 
 const upcoming = new Movies('upcoming');
 const popular = new Movies('popular');
 const topRated = new Movies('top_rated');
 const involvement = new InvolvementAPI();
+const userlikes = new LocalStorageHelper('userLikes');
 
 document.addEventListener('DOMContentLoaded', () => {
   addPopupToDom();
@@ -22,6 +24,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const overlay = document.querySelector('.popOverlay');
   const popup = document.querySelector('.popContainer');
   const submitError = document.getElementById('submitError');
+  
+  const markAllUserLikedItems = () => {
+    if(userlikes.data!==null){
+      userlikes.data.forEach((itemId) => {
+        updateLikeIcon(itemId);
+      });
+    }
+  }
 
   const getAndDisplayMovieDetails = (id, elementId) => {
     let movie = null;
@@ -37,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
     displayMovieDetails(movie);
     involvement.getComments(id).then(() => {
       displayComments(involvement.popupComments);
-      displayCommentsCounter(commentsCounter(involvement.popupComments), 'popup');
+      displayCommentsCounter(commentsCounter(involvement.popupComments));
     });
     document.getElementById('idHiddenInput').value = id;
   };
@@ -47,7 +57,6 @@ document.addEventListener('DOMContentLoaded', () => {
     movieContainer.addEventListener('click', (event) => {
       let id = null;
       let shouldOpenPopup = false;
-      console.log(event.target);
       if (event.target.classList.contains('card-img-top')) {
         id = event.target.id.replace('img', '');
         shouldOpenPopup = true;
@@ -62,11 +71,11 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       if(event.target.classList.contains('fa-heart')){
         id = event.target.id.replace('like', '');
-        console.log(id);
         involvement.addLike(id).then(() => {
           incrementLike(id);
+          updateLikeIcon(id);
+          userlikes.pushItem(id);
         });
-        
       }
       if (shouldOpenPopup) {
         clearCommentForm();
@@ -93,9 +102,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   involvement.getLikes().then(() => {
     displayAllLikes(involvement.likes);
+    markAllUserLikedItems();
   });
-
-  markAllUserLikedItems();
   
   submitComment.addEventListener('click', (event) => {
     event.preventDefault();
@@ -106,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
       involvement.addComment(id, name.value, commentDescription.value).then(() => {
         involvement.getComments(id).then(() => {
           displayComments(involvement.popupComments);
-          displayCommentsCounter(commentsCounter(involvement.popupComments), 'popup');
+          displayCommentsCounter(commentsCounter(involvement.popupComments));
         });
       });
       clearCommentForm();
