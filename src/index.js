@@ -2,7 +2,7 @@ import './CSS/style.css';
 import './CSS/popup.css';
 import {
   displayMovies, displayMovieDetails, displayComments,
-  addPopupToDom, clearCommentForm, displayCommentsCounter, displayAllLikes, incrementLike
+  addPopupToDom, clearCommentForm, displayCommentsCounter, displayAllLikes, incrementLike, markAllUserLikedItems
 } from './JS/display.js';
 import { commentsCounter } from './JS/counters.js';
 import Movies from './JS/Movies.js';
@@ -90,13 +90,13 @@ document.addEventListener('DOMContentLoaded', () => {
     displayMovies(topRated.data, 'top_rated');
     addEventListenerToMovies('top_rated');
   });
-  involvement.addLike(1).then(() => {
-    involvement.getLikes().then(() => {
-      displayAllLikes(involvement.likes);
-    });
-  })
-  
 
+  involvement.getLikes().then(() => {
+    displayAllLikes(involvement.likes);
+  });
+
+  markAllUserLikedItems();
+  
   submitComment.addEventListener('click', (event) => {
     event.preventDefault();
     const id = document.getElementById('idHiddenInput').value;

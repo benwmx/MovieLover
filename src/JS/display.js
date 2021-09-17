@@ -1,3 +1,4 @@
+import LocalStorage  from "./LocalStorage";
 const addPopupToDom = () => {
   const popup = `<div class="popOverlay d-none"></div>
     <div class="popContainer d-none text-light">
@@ -145,6 +146,10 @@ const updateLikeIcon = (id) => {
   const likeIcon =document.getElementById(`like${id}`);
   likeIcon.classList.remove('far');
   likeIcon.classList.add('fas');
+}
+
+const markAllUserLikedItems = () => {
+
 }
 
 export {
