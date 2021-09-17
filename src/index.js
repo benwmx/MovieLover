@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
         id = event.target.id.replace('comment', '');
         shouldOpenPopup = true;
       }
-      if(shouldOpenPopup) {
+      if (shouldOpenPopup) {
         clearCommentForm();
         getAndDisplayMovieDetails(id, elementId);
       }
@@ -78,19 +78,18 @@ document.addEventListener('DOMContentLoaded', () => {
     addEventListenerToMovies('top_rated');
   });
 
-  submitComment.addEventListener('click', (event) => {
+  submitComment.addEventListener('click', () => {
     const id = document.getElementById('idHiddenInput').value;
-    if(name.value ==='' || commentDescription.value === ''){
+    if (name.value === '' || commentDescription.value === '') {
       submitError.classList.remove('d-none');
-    }
-    else{
-    involvement.addComment(id, name.value, commentDescription.value).then(() => {
-      involvement.getComments(id).then(() => {
-        displayComments(involvement.popupComments); 
+    } else {
+      involvement.addComment(id, name.value, commentDescription.value).then(() => {
+        involvement.getComments(id).then(() => {
+          displayComments(involvement.popupComments);
+        });
       });
-    });
-    clearCommentForm();
-  }
+      clearCommentForm();
+    }
   });
   closeBtn.addEventListener('click', () => {
     popup.classList.add('d-none');
