@@ -1,3 +1,4 @@
 const commentsCounter = (comments) => comments.length;
+const moviesCounter = (items) => items.length;
 
-export { commentsCounter as default };
+export { commentsCounter, moviesCounter };
