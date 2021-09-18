@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Lover</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css"
+        integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container-fluid">
+                <a class="navbar-brand text-info fs-2" href="#"><i class="fas fa-video"></i></a>
+                <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNavAltMarkup">
+                    <div class="navbar-nav ">
+                        <ul class="nav nav-tabs bg-info" id="myTab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="upcoming-tab" data-bs-toggle="tab"
+                                    data-bs-target="#upcoming" type="button" role="tab" aria-controls="upcoming"
+                                    aria-selected="true">Upcoming</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="top_rated-tab" data-bs-toggle="tab"
+                                    data-bs-target="#top_rated" type="button" role="tab" aria-controls="top_rated"
+                                    aria-selected="false">Top Rated</button>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="popular-tab" data-bs-toggle="tab" data-bs-target="#popular"
+                                    type="button" role="tab" aria-controls="popular"
+                                    aria-selected="false">Popular</button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="upcoming" role="tabpanel" aria-labelledby="upcoming-tab">
+            <h1 class="text-light"> (<span id="upcoming-movies-counter"></span>) Latest Movies</h1>
+        </div>
+        <div class="tab-pane fade" id="top_rated" role="tabpanel" aria-labelledby="top_rated-tab">
+            <h1 class="text-light"> (<span id="top_rated-movies-counter"></span>) Top Rated Movies</h1>
+        </div>
+        <div class="tab-pane fade" id="popular" role="tabpanel" aria-labelledby="popular-tab">
+            <h1 class="text-light"> (<span id="popular-movies-counter"></span>) Popular Movies</h1>
+        </div>
+    </div>
+    <footer class="bg-dark text-center mt-4">
+        <div class="container p-4 pb-0">
+            <div class="text-center p-3 text-light">
+                Made with Love ❤️ by <a class="mx-2 text-light" href="https://github.com/ahzia"> @ahzia </a> ➕
+                <a class="mx-2 text-light" href="https://github.com/benwmx"> @benwmx </a>
+            </div>
+        </div>
+    </footer>
+    <script src="https://kit.fontawesome.com/6593adb55f.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

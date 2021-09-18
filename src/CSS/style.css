@@ -1,0 +1,22 @@
+body {
+  background-color: black;
+}
+
+.list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 20px;
+}
+
+.card-img-top,
+.card-title,
+.fa-comment-dots,
+.fa-heart {
+  cursor: pointer;
+}
+
+.fa-comment-dots,
+.fa-heart {
+  font-size: 20px;
+}
