@@ -31,7 +31,7 @@ These are list of test we have writed:
 
 Deployed to Github Pages
 
-[Live Demo Link](https://benwmx.github.io/Javascript-capstone/)
+[Live Demo Link](https://benwmx.github.io/MovieLover/)
 
 ## Getting Started
 
