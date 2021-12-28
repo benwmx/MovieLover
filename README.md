@@ -4,7 +4,7 @@
 # Movie Lover
 
 > web application for listing the latest/top-rated/popular movies from [themoviedb](https://api.themoviedb.org/) , with a simple but elegant UI.
-This application also allow you to like and comment movies using [Involvment API]() and stores user liked items in the browser local storage.
+This application also allow you to like and comment movies using [Involvment API](https://www.notion.so/Involvement-API-869e60b5ad104603aa6db59e08150270) and stores user liked items in the browser local storage.
 
 ## ScreenShots
 ![](./img/scs1.png)
@@ -23,7 +23,7 @@ https://user-images.githubusercontent.com/60202444/133863713-7d8646df-91c0-4af3-
 ## Built with
 
 - Javascript
-- Html/Css
+- HTML/CSS
 - Bootstrap
 - Webpack
 
